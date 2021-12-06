@@ -109,7 +109,16 @@
       },
       show(val) {
         val && this.loadImage();
-      }
+      },
+      showViewer(val) {
+        const { showViewer, imageIndex } = this;
+        const url = this.previewSrcList[imageIndex];
+        this.$emit('preview', {
+          showViewer,
+          imageIndex,
+          url
+        })
+      } 
     },
 
     mounted() {
