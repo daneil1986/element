@@ -16,7 +16,7 @@
       :style="imageStyle"
       :class="{ 'el-image__inner--center': alignCenter, 'el-image__preview': preview }">
     <template v-if="preview">
-      <image-viewer :z-index="zIndex" :initial-index="imageIndex" v-if="showViewer" :on-close="closeViewer" :url-list="previewSrcList"/>
+      <image-viewer :z-index="zIndex" :initial-index="imageIndex" v-if="showViewer" :on-close="closeViewer" :url-list="previewSrcList" @change="changeHandler"/>
     </template>
   </div>
 </template>
@@ -72,7 +72,8 @@
         show: !this.lazy,
         imageWidth: 0,
         imageHeight: 0,
-        showViewer: false
+        showViewer: false,
+        currentImageIndex: 0
       };
     },
 
@@ -111,7 +112,7 @@
         val && this.loadImage();
       },
       showViewer(val) {
-        const { showViewer, imageIndex } = this;
+        const { showViewer, currentImageIndex: imageIndex } = this;
         const url = this.previewSrcList[imageIndex];
         this.$emit('preview', {
           showViewer,
@@ -170,6 +171,9 @@
           this.show = true;
           this.removeLazyLoadListener();
         }
+      },
+      changeHandler(imageIndex) {
+        this.currentImageIndex = imageIndex;
       },
       addLazyLoadListener() {
         if (this.$isServer) return;

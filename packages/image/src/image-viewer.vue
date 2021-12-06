@@ -277,11 +277,13 @@ export default {
       if (this.isFirst && !this.infinite) return;
       const len = this.urlList.length;
       this.index = (this.index - 1 + len) % len;
+      this.$emit('change', this.index);
     },
     next() {
       if (this.isLast && !this.infinite) return;
       const len = this.urlList.length;
       this.index = (this.index + 1) % len;
+      this.$emit('change', this.index);
     },
     handleActions(action, options = {}) {
       if (this.loading) return;
