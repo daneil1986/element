@@ -117,8 +117,8 @@
           showViewer,
           imageIndex,
           url
-        })
-      } 
+        });
+      }
     },
 
     mounted() {
