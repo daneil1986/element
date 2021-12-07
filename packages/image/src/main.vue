@@ -245,6 +245,7 @@
         prevOverflow = document.body.style.overflow;
         document.body.style.overflow = 'hidden';
         this.showViewer = true;
+        this.currentImageIndex = this.imageIndex;
       },
       closeViewer() {
         document.body.style.overflow = prevOverflow;
