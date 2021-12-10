@@ -54,6 +54,10 @@
       src: String,
       fit: String,
       right: String,
+      showPrview: {
+        type: Boolean,
+        default: () => false
+      },
       lazy: Boolean,
       scrollContainer: {},
       previewSrcList: {
@@ -138,6 +142,8 @@
       } else {
         this.loadImage();
       }
+
+      this.showViewer = this.showPrview;;
     },
 
     beforeDestroy() {
