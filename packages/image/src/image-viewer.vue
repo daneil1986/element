@@ -217,7 +217,7 @@ export default {
         }
       });
       on(document, 'keydown', this._keyDownHandler);
-      on(document, mousewheelEventName, this._mouseWheelHandler);
+      // on(document, mousewheelEventName, this._mouseWheelHandler);
     },
     deviceSupportUninstall() {
       off(document, 'keydown', this._keyDownHandler);
