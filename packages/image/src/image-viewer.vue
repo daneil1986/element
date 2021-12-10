@@ -203,21 +203,25 @@ export default {
         }
       };
       this._mouseWheelHandler = rafThrottle(e => {
-        const delta = e.wheelDelta ? e.wheelDelta : -e.detail;
-        if (delta > 0) {
-          this.handleActions('zoomIn', {
-            zoomRate: 0.015,
-            enableTransition: false
-          });
-        } else {
-          this.handleActions('zoomOut', {
-            zoomRate: 0.015,
-            enableTransition: false
-          });
-        }
+        const path = e.path;
+        const isInImgViewer = path.find(e => e.className === 'el-image-viewer__wrapper');
+        if (isInImgViewer) {
+          const delta = e.wheelDelta ? e.wheelDelta : -e.detail;
+          if (delta > 0) {
+            this.handleActions('zoomIn', {
+              zoomRate: 0.015,
+              enableTransition: false
+            });
+          } else {
+            this.handleActions('zoomOut', {
+              zoomRate: 0.015,
+              enableTransition: false
+            });
+          }
+        } 
       });
       on(document, 'keydown', this._keyDownHandler);
-      // on(document, mousewheelEventName, this._mouseWheelHandler);
+      on(document, mousewheelEventName, this._mouseWheelHandler);
     },
     deviceSupportUninstall() {
       off(document, 'keydown', this._keyDownHandler);

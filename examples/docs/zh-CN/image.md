@@ -115,7 +115,8 @@
 <div class="demo-image__preview">
   <el-image 
     style="width: 100px; height: 100px"
-    :src="url" 
+    :src="url"
+    right="50%"
     :preview-src-list="srcList">
   </el-image>
 </div>
