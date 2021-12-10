@@ -1,5 +1,5 @@
 <template>
-  <div class="el-image" :style="style">
+  <div class="el-image">
     <slot v-if="loading" name="placeholder">
       <div class="el-image__placeholder"></div>
     </slot>
@@ -16,7 +16,7 @@
       :style="imageStyle"
       :class="{ 'el-image__inner--center': alignCenter, 'el-image__preview': preview }">
     <template v-if="preview">
-      <image-viewer :z-index="zIndex" :initial-index="imageIndex" v-if="showViewer" :on-close="closeViewer" :url-list="previewSrcList" @change="changeHandler"/>
+      <image-viewer :z-index="zIndex"  :style="style" :initial-index="imageIndex" v-if="showViewer" :on-close="closeViewer" :url-list="previewSrcList" @change="changeHandler"/>
     </template>
   </div>
 </template>
@@ -54,7 +54,7 @@
       src: String,
       fit: String,
       right: String,
-      showPrview: {
+      showPreview: {
         type: Boolean,
         default: () => false
       },
@@ -143,7 +143,7 @@
         this.loadImage();
       }
 
-      this.showViewer = this.showPrview;;
+      this.showViewer = this.showPreview;;
     },
 
     beforeDestroy() {
