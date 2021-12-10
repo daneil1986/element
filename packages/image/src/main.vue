@@ -1,5 +1,5 @@
 <template>
-  <div class="el-image">
+  <div class="el-image" :style="style">
     <slot v-if="loading" name="placeholder">
       <div class="el-image__placeholder"></div>
     </slot>
@@ -53,6 +53,7 @@
     props: {
       src: String,
       fit: String,
+      right: String,
       lazy: Boolean,
       scrollContainer: {},
       previewSrcList: {
@@ -86,6 +87,15 @@
             : this.getImageStyle(fit);
         }
         return {};
+      },
+      style() {
+        if (this.right) {
+          return {
+            right: this.right
+          };
+        } else {
+          return {};
+        }
       },
       alignCenter() {
         return !this.$isServer && !isSupportObjectFit() && this.fit !== ObjectFit.FILL;
