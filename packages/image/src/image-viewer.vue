@@ -257,6 +257,7 @@ export default {
     handleMaskClick() {
       if (this.maskClosable) {
         this.hide();
+        this.onClose();
       }
     },
     reset() {
