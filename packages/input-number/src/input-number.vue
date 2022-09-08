@@ -116,6 +116,10 @@
         immediate: true,
         handler(value) {
           let newVal = value === undefined ? value : Number(value);
+          // 数据为空
+          if (value === '') {
+            newVal = undefined;
+          }
           if (newVal !== undefined) {
             if (isNaN(newVal)) {
               return;
